@@ -12,6 +12,18 @@
 ///       - asset: fonts/CustomIcons.ttf
 ///
 /// 
+/// * Material Design Icons, Copyright (C) Google, Inc
+///         Author:    Google
+///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+///         Homepage:  https://design.google.com/icons/
+/// * Font Awesome, Copyright (C) 2016 by Dave Gandy
+///         Author:    Dave Gandy
+///         License:   SIL ()
+///         Homepage:  http://fortawesome.github.com/Font-Awesome/
+/// * Linearicons Free, Copyright (C) Linearicons.com
+///         Author:    Perxis
+///         License:   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+///         Homepage:  https://linearicons.com
 ///
 import 'package:flutter/widgets.dart';
 
@@ -21,5 +33,14 @@ class CustomIcons {
   static const _kFontFam = 'CustomIcons';
   static const _kFontPkg = null;
 
-  static const IconData twitter_logo_whiteonimage = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData new_tweet = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData replied = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData feedback = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData send = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData emergency = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData replied_bold = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData edit = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pencil = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData delete = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData send_3d = IconData(0xf1d8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

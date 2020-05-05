@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hello/presentation/custom_icons_icons.dart';
-
 import './home.dart';
 import './strings.dart';
 
