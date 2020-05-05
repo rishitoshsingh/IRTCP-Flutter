@@ -21,9 +21,11 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      // title: Text(Strings.appTitle),
-      // ),
+      appBar: AppBar(
+        title: (_currentIndex == 0)
+            ? Text('Emergency')
+            : (_currentIndex == 1) ? Text('Feedback') : Text('Replied'),
+      ),
       body: TabBarView(
         controller: _tabController,
         children: [

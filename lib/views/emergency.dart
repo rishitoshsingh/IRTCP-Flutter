@@ -91,7 +91,7 @@ Widget getTweetView(Documents tweetDoc) {
         side: BorderSide(color: Colors.blue),
         borderRadius: BorderRadius.circular(16.0),
       ),
-      margin: EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
+      margin: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
       color: Colors.white,
       elevation: 8.0,
       child: Column(
