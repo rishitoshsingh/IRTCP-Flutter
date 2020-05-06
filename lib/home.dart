@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hello/presentation/custom_icons_icons.dart';
 import 'package:hello/views/emergency.dart';
 
+import './views/tweet.dart';
+
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => HomeState();
@@ -35,7 +37,12 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Tweet()),
+          );
+        },
         tooltip: 'New Tweet',
         label: Text('New Tweet'),
         icon: Icon(CustomIcons.new_tweet),

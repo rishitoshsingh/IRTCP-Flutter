@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hello/presentation/custom_icons_icons.dart';
 import 'package:hello/strings.dart';
@@ -71,8 +70,6 @@ Future<String> deleteTweet(Documents tweetDoc) async {
 
 Widget getTweetView(
     BuildContext context, Documents tweetDoc, List<Documents> documents) {
-  bool _inputEnabled = false;
-
   return Dismissible(
     key: Key(tweetDoc.tweetId),
     onDismissed: (direction) {
@@ -166,23 +163,6 @@ Widget getTweetView(
             ),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
-                child: TextField(
-                  keyboardType: TextInputType.multiline,
-                  autocorrect: true,
-                  maxLines: null,
-                  enabled: _inputEnabled,
-                  textInputAction: TextInputAction.send,
-                  textCapitalization: TextCapitalization.sentences,
-                  decoration: InputDecoration.collapsed(
-                      focusColor: Colors.blue,
-                      fillColor: Colors.blue,
-                      hintText: _inputEnabled ? 'Reply' : ' '),
-                ),
-              ),
-            ),
             FloatingActionButton(
               elevation: 8.0,
               mini: true,
