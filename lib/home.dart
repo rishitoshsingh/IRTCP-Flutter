@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello/presentation/custom_icons_icons.dart';
-import 'package:hello/views/emergency.dart';
+import 'package:hello/views/collectionWidget.dart';
 
 import './views/tweet.dart';
 
@@ -31,8 +31,8 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       body: TabBarView(
         controller: _tabController,
         children: [
-          Emergency('emergency'),
-          Emergency('feedback'),
+          CollectionWidget('emergency'),
+          CollectionWidget('feedback'),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
