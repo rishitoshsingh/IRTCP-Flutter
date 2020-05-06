@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../models/tweets.dart';
+import './reply.dart';
 
 class Emergency extends StatefulWidget {
   final String collection;
@@ -36,8 +37,8 @@ class EmergencyState extends State<Emergency> {
             return ListView.builder(
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, position) {
-                return getTweetView(
-                    snapshot.data.documents[position], snapshot.data.documents);
+                return getTweetView(context, snapshot.data.documents[position],
+                    snapshot.data.documents);
               },
             );
           }
@@ -68,7 +69,8 @@ Future<String> deleteTweet(Documents tweetDoc) async {
   }
 }
 
-Widget getTweetView(Documents tweetDoc, List<Documents> documents) {
+Widget getTweetView(
+    BuildContext context, Documents tweetDoc, List<Documents> documents) {
   bool _inputEnabled = false;
 
   return Dismissible(
@@ -184,8 +186,15 @@ Widget getTweetView(Documents tweetDoc, List<Documents> documents) {
             FloatingActionButton(
               elevation: 8.0,
               mini: true,
+              heroTag: tweetDoc.iId.oid,
               tooltip: 'Reply',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Reply(tweet: tweetDoc)),
+                );
+              },
               focusColor: Colors.blue,
               child: Icon(
                 CustomIcons.send,
