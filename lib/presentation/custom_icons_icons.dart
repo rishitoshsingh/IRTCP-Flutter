@@ -12,6 +12,10 @@
 ///       - asset: fonts/CustomIcons.ttf
 ///
 /// 
+/// * Typicons, (c) Stephen Hutchings 2012
+///         Author:    Stephen Hutchings
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://typicons.com/
 /// * Material Design Icons, Copyright (C) Google, Inc
 ///         Author:    Google
 ///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
@@ -33,6 +37,7 @@ class CustomIcons {
   static const _kFontFam = 'CustomIcons';
   static const _kFontPkg = null;
 
+  static const IconData twitter = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData new_tweet = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData replied = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData feedback = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
