@@ -1,6 +1,6 @@
-# hello
+# IRTCP-Flutter
 
-A new Flutter project.
+A flutter application for IRTCP.
 
 ## Getting Started
 
