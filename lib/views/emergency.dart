@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hello/presentation/custom_icons_icons.dart';
 import 'package:hello/strings.dart';
@@ -35,7 +36,8 @@ class EmergencyState extends State<Emergency> {
             return ListView.builder(
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, position) {
-                return getTweetView(snapshot.data.documents[position]);
+                return getTweetView(
+                    snapshot.data.documents[position], snapshot.data.documents);
               },
             );
           }
@@ -47,7 +49,8 @@ class EmergencyState extends State<Emergency> {
 }
 
 Future<Tweets> _fetchTweets(String collection) async {
-  final response = await http.get(Strings.fetchDocumentsBaseUrl + collection);
+  final response = await http
+      .get(Strings.fetchDocumentsBaseUrl + 'collection=' + collection);
   if (response.statusCode == 200) {
     return Tweets.fromJson(json.decode(response.body));
   } else {
@@ -55,11 +58,28 @@ Future<Tweets> _fetchTweets(String collection) async {
   }
 }
 
-Widget getTweetView(Documents tweetDoc) {
+Future<String> deleteTweet(Documents tweetDoc) async {
+  final response = await http
+      .get(Strings.deleteDocumentBaseUrl + 'tweetId=' + tweetDoc.tweetId);
+  if (response.statusCode == 200) {
+    return response.body;
+  } else {
+    throw Exception('Deleting tweet failed');
+  }
+}
+
+Widget getTweetView(Documents tweetDoc, List<Documents> documents) {
+  bool _inputEnabled = false;
+
   return Dismissible(
     key: Key(tweetDoc.tweetId),
+    onDismissed: (direction) {
+      documents.remove(tweetDoc);
+      deleteTweet(tweetDoc);
+    },
     direction: DismissDirection.horizontal,
     background: Container(
+      foregroundDecoration: BoxDecoration(color: Colors.transparent),
       padding: EdgeInsets.all(16.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -144,7 +164,23 @@ Widget getTweetView(Documents tweetDoc) {
             ),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
-            // TextField(),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+                child: TextField(
+                  keyboardType: TextInputType.multiline,
+                  autocorrect: true,
+                  maxLines: null,
+                  enabled: _inputEnabled,
+                  textInputAction: TextInputAction.send,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration.collapsed(
+                      focusColor: Colors.blue,
+                      fillColor: Colors.blue,
+                      hintText: _inputEnabled ? 'Reply' : ' '),
+                ),
+              ),
+            ),
             FloatingActionButton(
               elevation: 8.0,
               mini: true,
@@ -152,7 +188,7 @@ Widget getTweetView(Documents tweetDoc) {
               onPressed: () {},
               focusColor: Colors.blue,
               child: Icon(
-                CustomIcons.send_3d,
+                CustomIcons.send,
                 color: Colors.white,
               ),
             ),
